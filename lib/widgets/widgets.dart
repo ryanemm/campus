@@ -11,17 +11,17 @@ PreferredSize appBarMain(BuildContext context) {
 }
 
 TextStyle simpleTextStyle () {
-  return TextStyle(color: Colors.white, fontSize: 16);
+  return TextStyle(color: Colors.grey.shade800, fontSize: 16);
 }
 
 InputDecoration textFieldInputDecoration(String hintText) {
   return InputDecoration(
     hintText: hintText,
-    hintStyle: TextStyle(color: Colors.white54),
+    hintStyle: TextStyle(color: Colors.grey[400]),
     focusedBorder:
-      UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade600)),
     enabledBorder:
-      UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+      UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade600)),
   );
 }
 
