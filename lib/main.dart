@@ -1,4 +1,5 @@
 import 'package:campus/screens/signin.dart';
+import 'package:campus/screens/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: SignIn(),
+      home: SignUp(),
     );
   }
 }

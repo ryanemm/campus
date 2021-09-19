@@ -1,6 +1,8 @@
 import 'package:campus/widgets/widgets.dart';
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:campus/services/auth.dart";
+import "package:campus/screens/chat_room_screen.dart";
 
 class SignUp extends StatefulWidget {
 
@@ -12,9 +14,39 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+
+    TextEditingController emailEditingController = new TextEditingController();
+    TextEditingController passwordEditingController = new TextEditingController();
+    TextEditingController usernameEditingController = new TextEditingController();
+
+    final formKey = GlobalKey<FormState>();
+    bool isLoading = false;
+
+    AuthService authService = new AuthService();
+
+    signUp() async {
+      if(formKey.currentState!.validate()) {
+        setState(() {
+          isLoading = true;
+        });
+
+        await authService.signUpWithEmailAndPassword(
+          emailEditingController.text,
+          passwordEditingController.text).then((result) {
+          if (result != null) {
+            Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) => ChatRoom()
+            ));
+          }
+
+        });
+
+      }
+    }
+
     return Scaffold(
       //appBar: appBarMain(context),
-      body: Container(
+      body: isLoading ? Container(child: Center(child: CircularProgressIndicator())) : Container(
         decoration: BoxDecoration(
           image: DecorationImage(image:
             AssetImage(
@@ -58,6 +90,10 @@ class _SignUpState extends State<SignUp> {
                 width: MediaQuery.of(context).size.width * 0.7,
                 child:
                   TextFormField(
+                    validator: (val) {
+                      return RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~] +@[a-      zA-Z0-9]+\.[a-zA-Z]+").hasMatch(val!) ? null : "Enter correct email";
+                    },
+                    controller: emailEditingController,
                     style: simpleTextStyle(),
                     decoration: textFieldInputDecoration("Email")
                   )),
@@ -66,6 +102,10 @@ class _SignUpState extends State<SignUp> {
                   width: MediaQuery.of(context).size.width * 0.7,
                   child:
                     TextFormField(
+                      validator: (val) {
+                        return val!.isEmpty || val.length < 3 ? "Enter username with 3+ characters" : null;
+                      },
+                      controller: usernameEditingController,
                       style: simpleTextStyle(),
                       decoration: textFieldInputDecoration("Username")
                     )),
@@ -74,6 +114,7 @@ class _SignUpState extends State<SignUp> {
                   width: MediaQuery.of(context).size.width * 0.7,
                   child:
                   TextFormField(
+                    controller: passwordEditingController,
                     obscureText: true,
                     validator: (val) {
                       return val!.length > 6
@@ -102,7 +143,7 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height: 16),
             GestureDetector(
               onTap: () {
-                //add later
+                signUp();
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 16),
@@ -117,7 +158,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  "Sign In",
+                  "Sign Up",
                   style: biggerTextStyle(),
                   textAlign: TextAlign.center,
                 )
