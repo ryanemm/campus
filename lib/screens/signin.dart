@@ -1,8 +1,11 @@
 import 'package:campus/widgets/widgets.dart';
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
+import "package:campus/helper/authenticate.dart";
 
 class SignIn extends StatefulWidget {
+  final Function toggle;
+  SignIn(this.toggle);
 
   @override
   _SignInState createState() => _SignInState();
@@ -141,14 +144,20 @@ class _SignInState extends State<SignIn> {
                   style: simpleTextStyle(),
                 ),
                 SizedBox(width: 5),
-                Text(
-                  "Register now",
-                  style: TextStyle(
+                GestureDetector(
+                  onTap: () {
+                    widget.toggle();
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 8),
+                    child: Text(
+                      "Register now",
+                      style: TextStyle(
                     color: Colors.grey[800],
                     fontSize: 16,
                     decoration: TextDecoration.underline
                   )
-                ),
+                ),),),
               ],
             ),
             SizedBox(height: 30),
@@ -160,7 +169,7 @@ class _SignInState extends State<SignIn> {
       )
     )
       )
-    
+
     );
   }
 }

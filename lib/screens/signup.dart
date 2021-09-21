@@ -7,6 +7,8 @@ import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_core/firebase_core.dart";
 
 class SignUp extends StatefulWidget {
+  final Function toggle;
+  SignUp(this.toggle);
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -129,7 +131,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ])
             ),
-        
+
             SizedBox(height: 16),
             GestureDetector(
               onTap: () {
@@ -147,11 +149,18 @@ class _SignUpState extends State<SignUp> {
                   )
                 ),
                 width: MediaQuery.of(context).size.width,
-                child: Text(
-                  "Sign Up",
-                  style: biggerTextStyle(),
-                  textAlign: TextAlign.center,
-                )
+                child: GestureDetector(
+                  onTap: () {
+                    widget.toggle();
+                  },
+                  child:
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        "Sign Up",
+                        style: biggerTextStyle(),
+                        textAlign: TextAlign.center,
+                )),),
               )
             ),
             SizedBox(height: 16),
