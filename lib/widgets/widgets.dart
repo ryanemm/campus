@@ -28,3 +28,7 @@ InputDecoration textFieldInputDecoration(String hintText) {
 TextStyle biggerTextStyle() {
   return TextStyle(color: Colors.white, fontSize: 17);
 }
+
+TextStyle mediumTextStyle() {
+  return TextStyle(color: Colors.white, fontSize: 15);
+}
