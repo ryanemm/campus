@@ -5,6 +5,7 @@ import "package:campus/services/auth.dart";
 import "package:campus/screens/chat_room_screen.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_core/firebase_core.dart";
+import "package:campus/services/database.dart";
 
 class SignUp extends StatefulWidget {
   final Function toggle;
@@ -27,9 +28,14 @@ class _SignUpState extends State<SignUp> {
     bool isLoading = false;
 
     AuthService authService = new AuthService();
+    DatabaseMethods databaseMethods = new DatabaseMethods();
 
     signUp() async {
       if(formKey.currentState!.validate()) {
+        Map<String, String> userInfoMap = {
+          "name" : usernameEditingController.text,
+          "email" : emailEditingController.text,
+        };
         setState(() {
           isLoading = true;
         });
@@ -37,13 +43,14 @@ class _SignUpState extends State<SignUp> {
         await authService.signUpWithEmailAndPassword(
           emailEditingController.text,
           passwordEditingController.text).then((result) {
-          if (result != null) {
+          //if (result != null)
+          databaseMethods.uploadUserInfo(userInfoMap);
             Navigator.pushReplacement(context, MaterialPageRoute(
               builder: (context) => ChatRoom()
             ));
           }
 
-        });
+        );
 
       }
     }
