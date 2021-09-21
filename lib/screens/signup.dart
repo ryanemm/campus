@@ -3,6 +3,8 @@ import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:campus/services/auth.dart";
 import "package:campus/screens/chat_room_screen.dart";
+import "package:firebase_auth/firebase_auth.dart";
+import "package:firebase_core/firebase_core.dart";
 
 class SignUp extends StatefulWidget {
 
@@ -127,19 +129,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ])
             ),
-            SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,),
-                child: Text("Forgot Password?",
-                              style: simpleTextStyle(),
-                            ),
-              )
-            ],         ),
+        
             SizedBox(height: 16),
             GestureDetector(
               onTap: () {
@@ -186,12 +176,12 @@ class _SignUpState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account?",
+                  "Already have an account?",
                   style: simpleTextStyle(),
                 ),
                 SizedBox(width: 5),
                 Text(
-                  "Register now",
+                  "Sign In now",
                   style: TextStyle(
                     color: Colors.grey[800],
                     fontSize: 16,
