@@ -1,9 +1,11 @@
+import 'package:campus/helper/authenticate.dart';
 import 'package:campus/screens/signin.dart';
 import "package:flutter/material.dart";
 import "package:campus/widgets/widgets.dart";
 import "package:firebase_auth/firebase_auth.dart";
 import "package:firebase_core/firebase_core.dart";
 import "package:campus/services/auth.dart";
+import 'package:campus/screens/search.dart';
 
 class ChatRoom extends StatefulWidget {
 
@@ -25,7 +27,7 @@ class _ChatRoomState extends State<ChatRoom> {
             onTap: () {
               authService.signOut();
               Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) => SignIn()
+                builder: (context) => Authenticate( )
               ));
             },
             child:
@@ -34,6 +36,12 @@ class _ChatRoomState extends State<ChatRoom> {
             child:
             Icon(Icons.exit_to_app)))]
       ) ,
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.search),
+          onPressed: () { Navigator.push(context, MaterialPageRoute(
+            builder: (context) => Search()));
+          }
+      ),
     );
 
   }
