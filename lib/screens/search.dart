@@ -28,7 +28,7 @@ class _SearchState extends State<Search> {
 
   ///create a chat room, send user to said conversation screen, pushReplacement
   createChatRoomAndStartConversation(String username) {
-    List<String> users = [username, myName];
+    List<String> users = [username, ];
     databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
   }
 
