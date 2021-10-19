@@ -8,8 +8,8 @@ import "package:firebase_core/firebase_core.dart";
 import "package:campus/services/database.dart";
 
 class SignUp extends StatefulWidget {
-  final Function toggle;
-  SignUp(this.toggle);
+//  final Function toggle;
+//  SignUp(this.toggle);
 
   @override
   _SignUpState createState() => _SignUpState();
@@ -158,7 +158,7 @@ class _SignUpState extends State<SignUp> {
                 width: MediaQuery.of(context).size.width,
                 child: GestureDetector(
                   onTap: () {
-                    widget.toggle();
+                    //widget.toggle();
                   },
                   child:
                     Container(

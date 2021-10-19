@@ -27,10 +27,10 @@ class _SearchState extends State<Search> {
   }
 
   ///create a chat room, send user to said conversation screen, pushReplacement
-  createChatRoomAndStartConversation(String username) {
-    List<String> users = [username, myName];
+  /*createChatRoomAndStartConversation(String username) {
+    List<String> users = [username, ];
     databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
-  }
+  }*/
 
   Widget searchList() {
     return searchSnapshot != null ? ListView.builder(

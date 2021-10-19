@@ -4,8 +4,8 @@ import "package:google_fonts/google_fonts.dart";
 import "package:campus/helper/authenticate.dart";
 
 class SignIn extends StatefulWidget {
-  final Function toggle;
-  SignIn(this.toggle);
+//  final Function toggle;
+  //SignIn(this.toggle);
 
   @override
   _SignInState createState() => _SignInState();
@@ -146,7 +146,7 @@ class _SignInState extends State<SignIn> {
                 SizedBox(width: 5),
                 GestureDetector(
                   onTap: () {
-                    widget.toggle();
+                    //widget.toggle();
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 8),

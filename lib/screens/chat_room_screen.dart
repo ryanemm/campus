@@ -27,7 +27,7 @@ class _ChatRoomState extends State<ChatRoom> {
             onTap: () {
               authService.signOut();
               Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (context) => Authenticate( )
+                builder: (context) => SignIn()
               ));
             },
             child:
