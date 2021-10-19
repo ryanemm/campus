@@ -27,7 +27,11 @@ class _SearchState extends State<Search> {
   }
 
   ///create a chat room, send user to said conversation screen, pushReplacement
+<<<<<<< HEAD
   /*createChatRoomAndStartConversation(String username) {
+=======
+  createChatRoomAndStartConversation(String username) {
+>>>>>>> ec18d1d8537999f0a632eac3b31a5d54af922c0d
     List<String> users = [username, ];
     databaseMethods.createChatRoom(chatRoomId, chatRoomMap);
   }*/
